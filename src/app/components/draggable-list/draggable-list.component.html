@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="list-container">
+    <div
+      *ngFor="let item of updatedItems; let i = index"
+      [appDragDrop]="i"
+      [canDrop]="canDropItem(i)"
+      [canDrag]="canDragItem(i)"
+      (itemDropped)="onItemDropped($event, i)"
+      (dragOver)="onDragOver(i)"
+      (dragLeave)="onDragLeave()"
+      [class.placeholder]="dragOverIndex === i && canDropItem(i)"
+      [class.no-drop]="!canDropItem(i)"
+      class="list-item">
+      {{ item }}
+    </div>
+  </div>
+  <div class="updated-list">
+    <h3>Updated List</h3>
+    <ul>
+      <li *ngFor="let item of updatedItems">{{ item }}</li>
+    </ul>
+  </div>
+</div>
